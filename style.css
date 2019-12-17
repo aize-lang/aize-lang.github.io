@@ -16,9 +16,10 @@ p {
 .title-bar {
     padding: 0;
     background-color: dimgray;
-    height: 200px;
+    height: 150px;
     margin: 50px 0 0 200px;
     text-align: center;
+
 }
 
 .content {
@@ -72,11 +73,11 @@ p {
 
 .title-container {
     display: inline-block;
-    height: 200px;
+    height: 150px;
 }
 
 .title {
-    padding-top: 75px;
+    padding-top: 35px;
     color: white;
     text-align: center;
     line-height: 50px;
@@ -105,6 +106,7 @@ p {
     text-align: center;
     vertical-align: middle;
     line-height: 50px;
+    z-index: 5;
 }
 
 .side-bar {
@@ -147,4 +149,5 @@ p {
 
 .top-bar-title {
     padding-right: 200px;
+
 }
