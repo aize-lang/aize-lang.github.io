@@ -51,7 +51,7 @@ template = jinja2.Template("""
                     <p>{{ item.caption }}</p>
                 </div>
             {% elif item.type == "Header" %}
-                <a id="{{ item.anchor }}"></a>
+                <a id="{{ item.anchor }}" class="jump-target"></a>
                 <p class="header">{{ item.header }}</p>
             {% endif %}
         {% endfor %}
@@ -102,9 +102,7 @@ def main(items):
 
 main([
     Header("Overview"),
-    Image("https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_272x92dp.png",
-          "Google Logo", "The Google Logo"),
-    Text("Aize a programming language that aims to be fast and simple."),
-    Image("https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_272x92dp.png",
-          "Google Logo", "The Google Logo"),
+    Text("Aize is a programming language designed by a programmer, for programmers. "
+         "It's design philsohpy can be summed up in 2 words: fast, simple."),
+    Text("""Link <a href="template/index.html">Link</a>"""),
 ])
