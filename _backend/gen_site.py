@@ -1,6 +1,6 @@
 import pathlib
 from dataclasses import dataclass, field
-from typing import ClassVar
+from typing import ClassVar, List
 
 import jinja2
 
@@ -11,6 +11,9 @@ with open("_templates/index_template.html") as template_file:
 @dataclass()
 class Item:
     type: ClassVar[str]
+
+    def render(self) -> str:
+        raise NotImplementedError()
 
 
 @dataclass()
@@ -24,6 +27,10 @@ class Header(Item):
         if self.anchor is None:
             self.anchor = self.header
 
+    def render(self) -> str:
+        return f"""<a id="{self.anchor}"></a>
+                <p class="header">{self.header}</p>"""
+
 
 @dataclass()
 class Image(Item):
@@ -33,12 +40,34 @@ class Image(Item):
     alt: str
     caption: str
 
+    def render(self) -> str:
+        return f"""<div class="img-box">
+                    <img src="{self.image}" alt="{self.alt}">
+                    <p>{self.caption}</p>
+                </div>"""
+
 
 @dataclass()
 class Text(Item):
     type = "Text"
 
     text: str
+
+    def render(self) -> str:
+        return f"""<p class="text">{self.text}</p>"""
+
+
+@dataclass()
+class UnorderedList(Item):
+    type = "UnorderedList"
+
+    text: str
+    items: List[Item]
+
+    def render(self) -> str:
+        return f"""{self.text}<ul class="content-list">{''.join(
+            '<li>'+item.render()+'</li>' for item in self.items)
+        }</ul>"""
 
 
 def main(items):
@@ -52,6 +81,9 @@ def main(items):
 main([
     Header("Overview"),
     Text("Aize is a programming language designed by a programmer, for programmers. "
-         "It's design philsohpy can be summed up in 2 words: fast, simple."),
-    Text("""Link <a href="_backend/_templates/index_template.html">Link</a>"""),
+         "It's design philosophy can be summed up in 2 words:"),
+    UnorderedList("", [
+        Text("Fast  -  Aize must be a fast language."),
+        Text("Simple  -  Aize must be a simple language to learn for experienced programmers, and relatively easy for beginners."),
+    ]),
 ])

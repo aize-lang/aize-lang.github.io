@@ -37,17 +37,7 @@
     </div>
     <div class="content">
         {% for item in items %}
-            {% if item.type == "Text" %}
-                <p class="text">{{ item.text }}</p>
-            {% elif item.type == "Image" %}
-                <div class="img-box">
-                    <img src="{{ item.image }}" alt="{{ item.alt }}">
-                    <p>{{ item.caption }}</p>
-                </div>
-            {% elif item.type == "Header" %}
-                <a id="{{ item.anchor }}"></a>
-                <p class="header">{{ item.header }}</p>
-            {% endif %}
+            {{ item.render() }}
         {% endfor %}
     </div>
 </body>
