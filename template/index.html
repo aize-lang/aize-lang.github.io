@@ -13,8 +13,12 @@
             Navigation
         </div>
         <div class="side-bar-links">
-            <a href="#title" class="side-bar-link"><p>Title</p></a>
-            <a href="#overview" class="side-bar-link"><p>Overview</p></a>
+            <a href="#title" class="side-bar-link"><p>Aize</p></a>
+            {% for item in items %}
+                {% if item.type == "Header" %}
+                    <a href="#{{ item.anchor }}" class="side-bar-link"><p>{{ item.header }}</p></a>
+                {% endif %}
+            {% endfor %}
         </div>
     </div>
     <div class="top-bar">
@@ -32,17 +36,19 @@
         </div>
     </div>
     <div class="content">
-        <a id="overview"></a>
-        <p class="header">Overview</p>
-        <div class="img-box">
-            <img src="https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_272x92dp.png" alt="thing">
-            <p>The google logo</p>
-        </div>
-        <p class="text">Aize is a multistage aerobic capacity test that gets progressively more difficult as it continues.</p>
-        <p class="text">Aize is a multistage aerobic capacity test that gets progressively more difficult as it continues.</p>
-        <p class="text">Aize is a multistage aerobic capacity test that gets progressively more difficult as it continues.</p>
-        <p class="text">Aize is a multistage aerobic capacity test that gets progressively more difficult as it continues.</p>
-        <p class="text">Aize is a multistage aerobic capacity test that gets progressively more difficult as it continues.</p>
+        {% for item in items %}
+            {% if item.type == "Text" %}
+                <p class="text">{{ item.text }}</p>
+            {% elif item.type == "Image" %}
+                <div class="img-box">
+                    <img src="{{ item.image }}" alt="{{ item.alt }}">
+                    <p>{{ item.caption }}</p>
+                </div>
+            {% elif item.type == "Header" %}
+                <a id="{{ item.anchor }}"></a>
+                <p class="header">{{ item.header }}</p>
+            {% endif %}
+        {% endfor %}
     </div>
 </body>
 </html>
