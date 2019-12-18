@@ -16,6 +16,8 @@
             <a href="#title" class="side-bar-link"><p>Aize</p></a>
             
                 
+            
+                
                     <a href="#Overview" class="side-bar-link link-0"><p>Overview</p></a>
                 
             
@@ -57,6 +59,15 @@
     </div>
     <div class="content">
         
+            <div class="code-block"><pre><code>def fibo(n: int) -> int {
+    if (n < 2) {
+        return n;
+    } else {
+        return fibo(n-1) + fibo(n-2);
+    }
+}
+</code></pre></div>
+        
             <a id="Overview" class="jump-target"></a>
                 <p class="header0">Overview</p>
         
@@ -67,7 +78,7 @@
             <a id="Getting Started" class="jump-target"></a>
                 <p class="header0">Getting Started</p>
         
-            <ol class="content-list"><li>Requirements<ul class="content-list"><li><p class="text">Python 3.7+</p></li><li>A C Compiler<ul class="content-list"><li><p class="text">MinGW on Windows. It must be on your path, in Program Files, or your user folder.</p></li><li><p class="text">GCC or Clang on Linux. At least one must be on your path.</p></li></ul></li></ul></li><li><p class="text">Goto the Github Repository and download and unzip aize-lang onto your computer somewhere.</p></li><li><p class="text">Goto into the `/aizelang` folder.</p></li><li><p class="text">Assuming the correct Python is on the path, type into the command prompt for Windows:</p><p class="text"><code>python -m aizec test/fibo.aize --run</code></p></li><li><p class="text">You should see the first 20 fibonacci numbers printed.</p></li><li><p class="text">For Linux, do Step 4 within the terminal instead.</p></li></ol>
+            <ol class="content-list"><li>Requirements<ul class="content-list"><li><p class="text">Python 3.7+</p></li><li>A C Compiler<ul class="content-list"><li><p class="text">MinGW on Windows. It must be on your path, in Program Files, or your user folder.</p></li><li><p class="text">GCC or Clang on Linux. At least one must be on your path.</p></li></ul></li></ul></li><li><p class="text">Goto the Github Repository and download and unzip aize-lang onto your computer somewhere.</p></li><li><p class="text">Goto into the `/aizelang` folder.</p></li><li><p class="text">Assuming the correct Python is on the path, type into the command prompt for Windows:</p><div class="code-block"><pre><code>python -m aizec test/fibo.aize --run</code></pre></div></li><li><p class="text">You should see the first 20 fibonacci numbers printed.</p></li><li><p class="text">For Linux, do Step 4 within the terminal instead.</p></li></ol>
         
             <a id="Links" class="jump-target"></a>
                 <p class="header0">Links</p>

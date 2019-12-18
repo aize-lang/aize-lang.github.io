@@ -95,6 +95,17 @@ class Stacked(Item):
         return f"""{''.join(item.render() for item in self.items)}"""
 
 
+@dataclass()
+class CodeBlock(Item):
+    type = "CodeBlock"
+
+    code: str
+
+    def render(self) -> str:
+        # return f"""<div class="code-block">{''.join('<p><code>'+line+'</code></p>' for line in self.code.splitlines())}</div>"""
+        return f"""<div class="code-block"><pre><code>{self.code}</code></pre></div>"""
+
+
 def main(items):
     file = template.render(items=items)
     curr_dir = pathlib.Path(__file__).absolute()
@@ -104,6 +115,15 @@ def main(items):
 
 
 main([
+    CodeBlock("""\
+def fibo(n: int) -> int {
+    if (n < 2) {
+        return n;
+    } else {
+        return fibo(n-1) + fibo(n-2);
+    }
+}
+"""),
     Header("Overview"),
     Text("Aize is a programming language designed by a programmer, for programmers. "
          "It's design philosophy can be summed up in 2 words:"),
@@ -123,7 +143,7 @@ main([
         Text("Goto the Github Repository and download and unzip aize-lang onto your computer somewhere."),
         Text("Goto into the `/aizelang` folder."),
         Stacked([Text("Assuming the correct Python is on the path, type into the command prompt for Windows:"),
-                 Text("<code>python -m aizec test/fibo.aize --run</code>")]),
+                 CodeBlock("python -m aizec test/fibo.aize --run")]),
         Text("You should see the first 20 fibonacci numbers printed."),
         Text("For Linux, do Step 4 within the terminal instead."),
     ]),

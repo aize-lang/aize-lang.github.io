@@ -25,11 +25,22 @@ ol {
 
 code {
     font-family: monospace;
-    background-color: dimgray;
     color: white;
-    padding: 5px 15px;
     margin: 5px 0;
-    line-height: 45px;
+    /*line-height: 32px;*/
+}
+
+
+pre {
+    display: inline-block;
+    background-color: dimgray;
+    padding: 15px 5px;
+    margin: 5px 0;
+    font-size: 11pt;
+    border: 0 solid #674ea7;
+    border-left-width: 3px;
+
+    min-width: 500px;
 }
 
 .title-bar {
