@@ -164,7 +164,7 @@ pre {
     vertical-align: middle;
     line-height: 50px;
     z-index: 5;
-    box-shadow: 0 5px 10px -5px black;
+    box-shadow: 0 -4px 10px 5px black;
 }
 
 .side-bar {
