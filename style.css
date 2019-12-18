@@ -46,15 +46,21 @@ pre {
 }
 
 .title-bar {
-    padding: 0;
+    width: 70%;
+    padding-left: 45px;
     background-color: #674ea7;
     height: 450px;
-    
+
     margin: 50px 0 0 200px;
     text-align: center;
 }
 
+.title-bar-container {
+    background-color: dimgray;
+}
+
 .title-bar a {
+    ;
     position: absolute;
     top: -50px;
 }
@@ -74,6 +80,7 @@ pre {
     padding: 15px 0 500px 45px;
     background-color: gray;
     position: relative;
+    z-index: 1;
 }
 
 
@@ -164,10 +171,22 @@ pre {
     font-size: 12pt;
 }
 
+.top-bar-container {
+    top: 0;
+    position: fixed;
+    width: 100%;
+    background-color: dimgray;
+    height: 50px;
+    z-index: 5;
+
+}
+
 .top-bar {
+    /*overflow-y: hidden;*/
     top: 0;
     margin: 0 0 0 200px;
-    width: 100%;
+    padding-left: 45px;
+    width: 70%;
     height: 50px;
     background-color: gray;
     color: white;
@@ -177,7 +196,20 @@ pre {
     vertical-align: middle;
     line-height: 50px;
     z-index: 5;
-    box-shadow: 0 -4px 10px 5px black;
+
+    border-bottom: 2px solid #674ea7;
+}
+
+
+.top-bar-right {
+    display: inline-block;
+    right: 0;
+    height: 50px;
+
+    position: fixed;
+    top: 0;
+    z-index: 8;
+    background-color: dimgray;
 }
 
 .side-bar {
@@ -233,4 +265,7 @@ pre {
 
 .top-bar-title {
     padding-right: 200px;
+    position: fixed;
+    top: 0;
+    z-index: 5;
 }
