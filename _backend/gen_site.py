@@ -70,6 +70,19 @@ class UnorderedList(Item):
         }</ul>"""
 
 
+@dataclass()
+class OrderedList(Item):
+    type = "OrderedList"
+
+    text: str
+    items: List[Item]
+
+    def render(self) -> str:
+        return f"""{self.text}<ol class="content-list">{''.join(
+            '<li>'+item.render()+'</li>' for item in self.items)
+        }</ol>"""
+
+
 def main(items):
     file = template.render(items=items)
     curr_dir = pathlib.Path(__file__).absolute()
@@ -86,4 +99,8 @@ main([
         Text("Fast  -  Aize must be a fast language."),
         Text("Simple  -  Aize must be a simple language to learn for experienced programmers, and relatively easy for beginners."),
     ]),
+    Header("Getting Started"),
+    OrderedList("", [
+        Text("Goto the Github Repository"),
+    ])
 ])
