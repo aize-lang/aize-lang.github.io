@@ -1,9 +1,10 @@
+import pathlib
 from dataclasses import dataclass, field
 from typing import ClassVar
 
 import jinja2
 
-with open("template/index.html") as template_file:
+with open("_templates/index_template.html") as template_file:
     template = jinja2.Template(template_file.read())
 
 
@@ -42,7 +43,8 @@ class Text(Item):
 
 def main(items):
     file = template.render(items=items)
-    with open("index.html", "w") as index:
+    curr_dir = pathlib.Path(__file__).absolute()
+    with (curr_dir.parent.parent / "index.html").open("w") as index:
         index.write(file)
         print("written")
 
@@ -51,5 +53,5 @@ main([
     Header("Overview"),
     Text("Aize is a programming language designed by a programmer, for programmers. "
          "It's design philsohpy can be summed up in 2 words: fast, simple."),
-    Text("""Link <a href="template/index.html">Link</a>"""),
+    Text("""Link <a href="_backend/_templates/index_template.html">Link</a>"""),
 ])
