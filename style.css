@@ -153,6 +153,7 @@ code {
     vertical-align: middle;
     line-height: 50px;
     z-index: 5;
+    box-shadow: 0 5px 10px -5px black;
 }
 
 .side-bar {
@@ -163,6 +164,7 @@ code {
     background-color: dimgrey;
     display: inline-block;
     position: fixed;
+    z-index: 8;
 }
 
 
