@@ -16,7 +16,7 @@
             <a href="#title" class="side-bar-link"><p>Aize</p></a>
             {% for item in items %}
                 {% if item.type == "Header" %}
-                    <a href="#{{ item.anchor }}" class="side-bar-link"><p>{{ item.header }}</p></a>
+                    <a href="#{{ item.anchor }}" class="side-bar-link link-{{ item.level }}"><p>{{ item.header }}</p></a>
                 {% endif %}
             {% endfor %}
         </div>
@@ -40,5 +40,6 @@
             {{ item.render() }}
         {% endfor %}
     </div>
+    <div class="bottom"></div>
 </body>
 </html>

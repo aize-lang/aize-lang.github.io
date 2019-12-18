@@ -13,6 +13,25 @@ p {
     padding: 0;
 }
 
+ul {
+    margin: 0;
+}
+
+ol {
+    margin: 0;
+}
+
+
+
+code {
+    font-family: monospace;
+    background-color: dimgray;
+    color: white;
+    padding: 5px 15px;
+    margin: 5px 0;
+    line-height: 45px;
+}
+
 .title-bar {
     padding: 0;
     background-color: #674ea7;
@@ -36,7 +55,7 @@ p {
 
 
 .jump-target {
-    position: absolute;
+    position: relative;
     top: -50px;
 }
 
@@ -54,16 +73,28 @@ p {
     color: white;
 }
 
-.header {
+.header0 {
     margin-left: -15px;
 
     color: #674ea7;
     font-family: sans-serif;
     font-weight: bold;
-    font-size: 23pt;
+    font-size: 26pt;
     margin-bottom: 5px;
     float: none;
 }
+
+.header1 {
+    margin-left: -15px;
+
+    color: #674ea7;
+    font-family: sans-serif;
+    font-weight: bold;
+    font-size: 22pt;
+    margin-bottom: 5px;
+    float: none;
+}
+
 
 .text {
     /*margin-left: 45px;*/
@@ -160,7 +191,26 @@ p {
     transition-duration: 0.1s;
 }
 
+.link-0 p {
+    margin-left: 0px;
+}
+
+.link-1 p {
+    margin-left: 15px;
+}
+
+.side-bar-link p {
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+
 .top-bar-title {
     padding-right: 200px;
+}
 
+.bottom {
+    width: 100%;
+    height: 600px;
+    background-color: gray;
 }

@@ -22,14 +22,16 @@ class Header(Item):
 
     header: str
     anchor: str = field(default=None)
+    level: int = field(default=0)
 
     def __post_init__(self):
         if self.anchor is None:
             self.anchor = self.header
 
     def render(self) -> str:
-        return f"""<a id="{self.anchor}"></a>
-                <p class="header">{self.header}</p>"""
+        assert 0 <= self.level <= 1
+        return f"""<a id="{self.anchor}" class="jump-target"></a>
+                <p class="header{self.level}">{self.header}</p>"""
 
 
 @dataclass()
@@ -83,6 +85,16 @@ class OrderedList(Item):
         }</ol>"""
 
 
+@dataclass()
+class Stacked(Item):
+    type = "Stacked"
+
+    items: List[Item]
+
+    def render(self) -> str:
+        return f"""{''.join(item.render() for item in self.items)}"""
+
+
 def main(items):
     file = template.render(items=items)
     curr_dir = pathlib.Path(__file__).absolute()
@@ -101,6 +113,25 @@ main([
     ]),
     Header("Getting Started"),
     OrderedList("", [
-        Text("Goto the Github Repository"),
-    ])
+        UnorderedList("Requirements", [
+            Text("Python 3.7+"),
+            UnorderedList("A C Compiler", [
+                Text("MinGW on Windows. It must be on your path, in Program Files, or your user folder."),
+                Text("GCC or Clang on Linux. At least one must be on your path.")
+            ])
+        ]),
+        Text("Goto the Github Repository and download and unzip aize-lang onto your computer somewhere."),
+        Text("Goto into the `/aizelang` folder."),
+        Stacked([Text("Assuming the correct Python is on the path, type into the command prompt for Windows:"),
+                 Text("<code>python -m aizec test/fibo.aize --run</code>")]),
+        Text("You should see the first 20 fibonacci numbers printed."),
+        Text("For Linux, do Step 4 within the terminal instead."),
+    ]),
+
+    Header("Links"),
+    Header("Github", level=1),
+    UnorderedList("", [
+        Text("<a href='https://github.com/aize-lang/aize-lang'>aize-lang</a>: The compiler repository."),
+        Text("<a href='https://github.com/aize-lang/aize-lang'>aize-lang.github.io</a>: This website's repository."),
+    ]),
 ])
