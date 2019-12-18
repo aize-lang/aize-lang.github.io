@@ -35,10 +35,12 @@
             </div>
         </div>
     </div>
-    <div class="content">
-        {% for item in items %}
-            {{ item.render() }}
-        {% endfor %}
+    <div class="content-container">
+        <div class="content">
+            {% for item in items %}
+                {{ item.render() }}
+            {% endfor %}
+        </div>
     </div>
 </body>
 </html>

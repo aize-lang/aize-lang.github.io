@@ -11,6 +11,8 @@ body {
 p {
     margin: 0;
     padding: 0;
+
+    display: block;
 }
 
 ul {
@@ -47,6 +49,7 @@ pre {
     padding: 0;
     background-color: #674ea7;
     height: 450px;
+    
     margin: 50px 0 0 200px;
     text-align: center;
 }
@@ -56,14 +59,21 @@ pre {
     top: -50px;
 }
 
+.content-container {
+    text-align: left;
+    background-color: dimgray;
+}
+
+
 .content {
-    overflow: auto;
+    display: inline-block;
+    text-align: left;
+
+    width: 70%;
     margin: 0 0 0 200px;
     padding: 15px 0 500px 45px;
     background-color: gray;
     position: relative;
-
-    box-shadow: 0 4px 10px 5px black;
 }
 
 
@@ -87,6 +97,7 @@ pre {
 }
 
 .header0 {
+    margin-top: 10px;
     margin-left: -15px;
 
     color: #674ea7;
@@ -112,7 +123,7 @@ pre {
 .text {
     /*margin-left: 45px;*/
 
-    width: 800px;
+    /*width: 800px;*/
     color: white;
     font-family: sans-serif;
     font-size: 15pt;
@@ -122,7 +133,7 @@ pre {
 .content-list {
     /*margin-left: 45px;*/
 
-    width: 700px;
+    /*width: 700px;*/
     color: white;
     font-family: sans-serif;
     font-size: 15pt;
