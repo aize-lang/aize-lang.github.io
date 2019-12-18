@@ -1,6 +1,7 @@
 import pathlib
 from dataclasses import dataclass, field
 from typing import ClassVar, List
+import textwrap
 
 import jinja2
 
@@ -101,6 +102,9 @@ class CodeBlock(Item):
 
     code: str
 
+    def __post_init__(self):
+        self.code = textwrap.dedent(self.code)
+
     def render(self) -> str:
         # return f"""<div class="code-block">{''.join('<p><code>'+line+'</code></p>' for line in self.code.splitlines())}</div>"""
         return f"""<div class="code-block"><pre><code>{self.code}</code></pre></div>"""
@@ -116,14 +120,15 @@ def main(items):
 
 main([
     CodeBlock("""\
-def fibo(n: int) -> int {
-    if (n < 2) {
-        return n;
-    } else {
-        return fibo(n-1) + fibo(n-2);
-    }
-}
-"""),
+        def fibo(n: int) -> int {
+            if (n < 2) {
+                return n;
+            } else {
+                return fibo(n-1) + fibo(n-2);
+            }
+        }
+    """),
+
     Header("Overview"),
     Text("Aize is a programming language designed by a programmer, for programmers. "
          "It's design philosophy can be summed up in 2 words:"),
@@ -131,6 +136,7 @@ def fibo(n: int) -> int {
         Text("Fast  -  Aize must be a fast language."),
         Text("Simple  -  Aize must be a simple language to learn for experienced programmers, and relatively easy for beginners."),
     ]),
+
     Header("Getting Started"),
     OrderedList("", [
         UnorderedList("Requirements", [
@@ -146,6 +152,38 @@ def fibo(n: int) -> int {
                  CodeBlock("python -m aizec test/fibo.aize --run")]),
         Text("You should see the first 20 fibonacci numbers printed."),
         Text("For Linux, do Step 4 within the terminal instead."),
+    ]),
+
+    Header("Features"),
+    UnorderedList("", [
+        Stacked([
+            Text("Easy and familiar syntax."),
+            CodeBlock("""\
+                def max(a: int, b: int) -> int {
+                    if (a > b) {
+                        return a;
+                    } else {
+                        return b;
+                    }
+                }
+            """)
+        ]),
+        Stacked([
+            Text("Classes and Traits to make polymorphism safe, fast, and simple."),
+            CodeBlock("""\
+                trait Bird {
+                    method make_noise() -> String;
+                }
+                
+                trait Crow : Bird {
+                    attr size: int;
+                
+                    method make_noise() -> String {
+                        return "Caw Caw!";
+                    }
+                }
+            """)
+        ])
     ]),
 
     Header("Links"),
