@@ -152,6 +152,6 @@ def fibo(n: int) -> int {
     Header("Github", level=1),
     UnorderedList("", [
         Text("<a href='https://github.com/aize-lang/aize-lang'>aize-lang</a>: The compiler repository."),
-        Text("<a href='https://github.com/aize-lang/aize-lang'>aize-lang.github.io</a>: This website's repository."),
+        Text("<a href='https://github.com/aize-lang/aize-lang.github.io'>aize-lang.github.io</a>: This website's repository."),
     ]),
 ])
